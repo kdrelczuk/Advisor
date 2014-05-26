@@ -7,6 +7,6 @@ app <- function(env)
   png(file = "/var/www/html/plot.png", bg = "transparent")
   hist(data,col='red')
   dev.off()
-  res.write(paste('Plot computed on ',Sys.time()))
+  res$write(paste('Plot computed on ',Sys.time()))
   res$finish()
 }
