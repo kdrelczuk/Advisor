@@ -1,7 +1,7 @@
 # basic config, set local to true when working on localhost
 local <- T
-port = 19011
-interface = '127.0.0.1'
+port = 9001
+interface = '0.0.0.'
 
 library(logging)
 addHandler(writeToFile, file = 'RServer.log')
