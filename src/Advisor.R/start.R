@@ -27,11 +27,10 @@ for(package in packages)
 if(success)
 {
   loginfo('-> creating listener on port %d',port)
-
-  s <- Rhttpd$new() 
-  s$start()
+  .Call(tools:::startHTTPD, interface, port)
   unlockBinding("httpdPort", environment(tools:::startDynamicHelp))
   assign("httpdPort", port, environment(tools:::startDynamicHelp))
+  s <- Rhttpd$new() 
   s$listenAddr <- interface
   s$listenPort <- port
 
