@@ -39,7 +39,7 @@ if(success)
   loginfo('-> loading applications (%d application to load)',length(apps))
   for(app in apps)
   {
-    s$add(name = unlist(strsplit(app,'[.]'))[1], app = paste('apps',app,sep='/'))
+    s$add(name = 'advisor', app = paste('apps',app,sep='/'))
     loginfo('---> application %s loaded', app)
   }
   loginfo('Initialization of rook server on port %d has ended. Server is working...',port)
