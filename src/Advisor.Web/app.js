@@ -9,10 +9,26 @@ Ext.application({
     [
         'Advisor.view.MainView'
     ],
+    stores:
+    [
+        'TickersStore',
+        'TickersDetailsChartStore'
+    ],
+    models:
+    [
+        'TickersModel',
+        'TickersDetailsChartModel'
+    ],
     views:
     [
       'TickersView',
-      'DetailsView'
+      'DetailsView',
+      'TickersDetailsView',
+      'TickersDetailsChartView'
+    ],
+    controllers:
+    [
+        'Advisor.controller.TickersController'
     ],
     launch: function()
     {

@@ -2,46 +2,7 @@ Ext.define('Advisor.view.TickersView',
     {
         extend: 'Ext.grid.Panel',
         alias: 'widget.tickerspanel',
-        listeners:
-        {
-          itemdblclick: function(gridpanel,record,item,e)
-          {
-             var tabPanel = Ext.getCmp('tabs');
-             tabPanel.add(
-                 {
-                     title: record.data.id,
-                     bodyPadding: 10,
-                     html : record.data.id,
-                     closable: true
-                 }
-             ).show();
-          }
-        },
-        store:
-        {
-            fields:
-            [
-                'id','name','price','change','pchange'
-            ],
-            autoLoad: true,
-            autoSync: true,
-            proxy:
-            {
-                type: 'rest',
-                url: 'data/tickersdata.json',
-                reader:
-                {
-                    type: 'json',
-                    root: 'data'
-                }
-            },
-            sorters:
-            [
-                {
-                    property: 'id'
-                }
-            ]
-        },
+        store: 'TickersStore',
         columns:
         [
             {
