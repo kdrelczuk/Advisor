@@ -1,7 +1,7 @@
 app <- function(env)
 {
   t1 = Sys.time()
-  
+  loginfo("plot called")
   req <- Rook::Request$new(env)
   res <- Rook::Response$new()
   
