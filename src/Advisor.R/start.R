@@ -48,7 +48,7 @@ if(success)
   loginfo('-> loading functions (%d functions to load)',length(funs))
   for(fun in funs)
   {
-    source(paste('apps',fun,sep='/'))
+    source(paste('functions',fun,sep='/'))
     loginfo('---> function %s loaded', fun)
   }
   
