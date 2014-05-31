@@ -43,4 +43,20 @@ if(success)
   }
   s$print()
   loginfo('Initialization of rook server on port %d has ended. Server is working...',port)
+
+  funs = list.files(path='functions/')
+  loginfo('-> loading functions (%d functions to load)',length(funs))
+  for(fun in funs)
+  {
+    source(paste('apps',fun,sep='/')
+    loginfo('---> function %s loaded', fun)
+  }
+  
+  if (.Platform$OS.type == "unix")
+  {
+    setwd("/var/www/html/")
+  } else
+  {
+    setwd("C:/RPlots")
+  }
 }
