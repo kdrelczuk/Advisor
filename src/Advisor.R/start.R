@@ -41,9 +41,9 @@ if(success)
     s$add(name = unlist(strsplit(app,'[.]'))[1], app = paste('apps',app,sep='/'))
     loginfo('---> application %s loaded', app)
   }
+  
   s$print()
-  loginfo('Initialization of rook server on port %d has ended. Server is working...',port)
-
+  
   funs = list.files(path='functions/')
   loginfo('-> loading functions (%d functions to load)',length(funs))
   for(fun in funs)
@@ -51,6 +51,10 @@ if(success)
     source(paste('functions',fun,sep='/'))
     loginfo('---> function %s loaded', fun)
   }
+  
+  loginfo('Initialization of rook server on port %d has ended. Server is working...',port)
+
+
   
   if (.Platform$OS.type == "unix")
   {
