@@ -31,7 +31,7 @@ app <- function(env)
     }
     , finally = 
     {
-      res$write(as.character(Sys.time()-t1)
+      res$write(as.character(Sys.time()-t1))
       res$finish()
     })
 }
