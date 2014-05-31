@@ -3,7 +3,7 @@ GetAdvisorData = function(ticker, start, stop)
   if (.Platform$OS.type == "unix")
   {
     drv <- JDBC("com.microsoft.sqlserver.jdbc.SQLServerDriver"
-                , "/etc/sqljdbc_2.0/sqljdbc4.jar")
+                , "/etc/sqljdbc/sqljdbc_3.0/enu/sqljdbc4.jar")
   } else 
   {
     drv <- JDBC("com.microsoft.sqlserver.jdbc.SQLServerDriver"
