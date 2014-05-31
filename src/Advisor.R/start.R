@@ -53,8 +53,6 @@ if(success)
   }
   
   loginfo('Initialization of rook server on port %d has ended. Server is working...',port)
-
-
   
   if (.Platform$OS.type == "unix")
   {

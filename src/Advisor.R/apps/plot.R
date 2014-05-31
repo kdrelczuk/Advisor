@@ -15,7 +15,7 @@ app <- function(env)
       pstop = as.Date(query$pstop)
       data = GetAdvisorData(symbol,pstart,pstop)
       
-      png(file='test.png',width=x,height=y)
+      png(file='/var/www/html/test.png',width=x,height=y)
       chartSeries(data, TA = 'addVo();addBBands();addCCI();addSMI()')
       dev.off()
     }
