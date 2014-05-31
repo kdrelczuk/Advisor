@@ -1,6 +1,6 @@
 app <- function(env)
 {
-  t1 = Sys.Time()
+  t1 = Sys.time()
   
   req <- Rook::Request$new(env)
   res <- Rook::Response$new()
