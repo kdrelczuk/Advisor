@@ -1,4 +1,4 @@
-appPlot <- function(env)
+app <- function(env)
 {
   t1 = Sys.time()
   
