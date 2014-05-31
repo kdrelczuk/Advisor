@@ -5,8 +5,11 @@ library(logging)
 addHandler(writeToFile, file = 'RServer.log')
 loginfo('==================================================')
 
+startdir = as.character(getwd())
+
 packages <- scan('/var/www/html/packages.cfg',what='character')
 success <- T
+setwd(startdir)
 
 loginfo('Initialization started')
 loginfo('-> loading packages (%d packages to load)',length(packages))
