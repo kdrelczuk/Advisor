@@ -17,6 +17,6 @@ app <- function(env)
   chartSeries(data, TA = 'addVo();addBBands();addCCI();addSMI()')
   dev.off()
   
-  res$write(Sys.time()-t1))
+  res$write(Sys.time()-t1)
   res$finish()
 }
