@@ -21,12 +21,12 @@ app <- function(env)
     }
     , warning = function(war)
     {
-      logwarn('plot application',war)
+      logwarn(paste('plot application',war))
       res$write(war)
     }
     , error = function(err)
     {
-      logerror('plot application',err)
+      logerror(paste('plot application',err))
       res$write(err)
     })
   

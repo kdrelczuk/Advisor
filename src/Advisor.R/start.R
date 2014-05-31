@@ -5,7 +5,7 @@ library(logging)
 addHandler(writeToFile, file = 'RServer.log')
 loginfo('==================================================')
 
-packages <- scan('packages.cfg',what='character')
+packages <- scan('/var/www/html/packages.cfg',what='character')
 success <- T
 
 loginfo('Initialization started')
