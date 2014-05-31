@@ -2,14 +2,11 @@ port = 9001
 interface = '0.0.0.0'
 
 library(logging)
-addHandler(writeToFile, file = 'RServer.log')
+addHandler(writeToFile, file = '/var/www/html/RServer.log')
 loginfo('==================================================')
 
-startdir = as.character(getwd())
-
-packages <- scan('/var/www/html/packages.cfg',what='character')
+packages <- scan('packages.cfg',what='character')
 success <- T
-setwd(startdir)
 
 loginfo('Initialization started')
 loginfo('-> loading packages (%d packages to load)',length(packages))
