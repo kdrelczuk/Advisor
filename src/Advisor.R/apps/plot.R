@@ -28,10 +28,7 @@ app <- function(env)
     {
       logerror('plot application',err)
       res$write(err)
-    }
-    , finally = 
-    {
-      res$write(as.character(Sys.time()-t1))
-      res$finish()
     })
+  res$write(as.character(Sys.time()-t1))
+  res$finish()
 }
