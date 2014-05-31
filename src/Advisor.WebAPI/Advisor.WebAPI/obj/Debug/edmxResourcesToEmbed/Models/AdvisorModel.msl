@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AdvisorModelStoreContainer" CdmEntityContainer="AdvisorEntities">
+    <EntitySetMapping Name="Ticker">
+      <EntityTypeMapping TypeName="AdvisorModel.Ticker">
+        <MappingFragment StoreEntitySet="Ticker">
+          <ScalarProperty Name="LastMonthlyUpdate" ColumnName="LastMonthlyUpdate" />
+          <ScalarProperty Name="LastWeeklyUpdate" ColumnName="LastWeeklyUpdate" />
+          <ScalarProperty Name="LastDailyUpdate" ColumnName="LastDailyUpdate" />
+          <ScalarProperty Name="QuandlTicker" ColumnName="QuandlTicker" />
+          <ScalarProperty Name="Market" ColumnName="Market" />
+          <ScalarProperty Name="LongName" ColumnName="LongName" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TickerDailyData">
+      <EntityTypeMapping TypeName="AdvisorModel.TickerDailyData">
+        <MappingFragment StoreEntitySet="TickerDailyData">
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="Close" ColumnName="Close" />
+          <ScalarProperty Name="Low" ColumnName="Low" />
+          <ScalarProperty Name="High" ColumnName="High" />
+          <ScalarProperty Name="Open" ColumnName="Open" />
+          <ScalarProperty Name="Point" ColumnName="Point" />
+          <ScalarProperty Name="TickerID" ColumnName="TickerID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TickerMonthlyData">
+      <EntityTypeMapping TypeName="AdvisorModel.TickerMonthlyData">
+        <MappingFragment StoreEntitySet="TickerMonthlyData">
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="Close" ColumnName="Close" />
+          <ScalarProperty Name="Low" ColumnName="Low" />
+          <ScalarProperty Name="High" ColumnName="High" />
+          <ScalarProperty Name="Open" ColumnName="Open" />
+          <ScalarProperty Name="Point" ColumnName="Point" />
+          <ScalarProperty Name="TickerID" ColumnName="TickerID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TickerWeeklyData">
+      <EntityTypeMapping TypeName="AdvisorModel.TickerWeeklyData">
+        <MappingFragment StoreEntitySet="TickerWeeklyData">
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="Close" ColumnName="Close" />
+          <ScalarProperty Name="Low" ColumnName="Low" />
+          <ScalarProperty Name="High" ColumnName="High" />
+          <ScalarProperty Name="Open" ColumnName="Open" />
+          <ScalarProperty Name="Point" ColumnName="Point" />
+          <ScalarProperty Name="TickerID" ColumnName="TickerID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

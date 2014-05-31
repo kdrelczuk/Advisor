@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AdvisorModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="AdvisorModelStoreContainer">
+          <EntitySet Name="Ticker" EntityType="AdvisorModel.Store.Ticker" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TickerDailyData" EntityType="AdvisorModel.Store.TickerDailyData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TickerMonthlyData" EntityType="AdvisorModel.Store.TickerMonthlyData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TickerWeeklyData" EntityType="AdvisorModel.Store.TickerWeeklyData" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__TickerDai__Ticke__02084FDA" Association="AdvisorModel.Store.FK__TickerDai__Ticke__02084FDA">
+            <End Role="Ticker" EntitySet="Ticker" />
+            <End Role="TickerDailyData" EntitySet="TickerDailyData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TickerMon__Ticke__07C12930" Association="AdvisorModel.Store.FK__TickerMon__Ticke__07C12930">
+            <End Role="Ticker" EntitySet="Ticker" />
+            <End Role="TickerMonthlyData" EntitySet="TickerMonthlyData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TickerWee__Ticke__04E4BC85" Association="AdvisorModel.Store.FK__TickerWee__Ticke__04E4BC85">
+            <End Role="Ticker" EntitySet="Ticker" />
+            <End Role="TickerWeeklyData" EntitySet="TickerWeeklyData" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Ticker">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ShortName" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="LongName" Type="varchar" Nullable="false" MaxLength="256" />
+          <Property Name="Market" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="QuandlTicker" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="LastDailyUpdate" Type="datetime" />
+          <Property Name="LastWeeklyUpdate" Type="datetime" />
+          <Property Name="LastMonthlyUpdate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TickerDailyData">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TickerID" />
+            <PropertyRef Name="Point" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TickerID" Type="smallint" Nullable="false" />
+          <Property Name="Point" Type="datetime" Nullable="false" />
+          <Property Name="Open" Type="numeric" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="High" Type="numeric" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="Low" Type="numeric" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="Close" Type="numeric" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="Volume" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TickerMonthlyData">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TickerID" />
+            <PropertyRef Name="Point" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TickerID" Type="smallint" Nullable="false" />
+          <Property Name="Point" Type="datetime" Nullable="false" />
+          <Property Name="Open" Type="numeric" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="High" Type="numeric" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="Low" Type="numeric" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="Close" Type="numeric" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="Volume" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TickerWeeklyData">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TickerID" />
+            <PropertyRef Name="Point" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TickerID" Type="smallint" Nullable="false" />
+          <Property Name="Point" Type="datetime" Nullable="false" />
+          <Property Name="Open" Type="numeric" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="High" Type="numeric" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="Low" Type="numeric" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="Close" Type="numeric" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="Volume" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__TickerDai__Ticke__02084FDA">
+          <End Role="Ticker" Type="AdvisorModel.Store.Ticker" Multiplicity="1" />
+          <End Role="TickerDailyData" Type="AdvisorModel.Store.TickerDailyData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TickerDailyData">
+              <PropertyRef Name="TickerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TickerMon__Ticke__07C12930">
+          <End Role="Ticker" Type="AdvisorModel.Store.Ticker" Multiplicity="1" />
+          <End Role="TickerMonthlyData" Type="AdvisorModel.Store.TickerMonthlyData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TickerMonthlyData">
+              <PropertyRef Name="TickerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TickerWee__Ticke__04E4BC85">
+          <End Role="Ticker" Type="AdvisorModel.Store.Ticker" Multiplicity="1" />
+          <End Role="TickerWeeklyData" Type="AdvisorModel.Store.TickerWeeklyData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TickerWeeklyData">
+              <PropertyRef Name="TickerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdvisorModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AdvisorEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Ticker" EntityType="AdvisorModel.Ticker" />
+          <EntitySet Name="TickerDailyData" EntityType="AdvisorModel.TickerDailyData" />
+          <EntitySet Name="TickerMonthlyData" EntityType="AdvisorModel.TickerMonthlyData" />
+          <EntitySet Name="TickerWeeklyData" EntityType="AdvisorModel.TickerWeeklyData" />
+          <AssociationSet Name="FK__TickerDai__Ticke__02084FDA" Association="AdvisorModel.FK__TickerDai__Ticke__02084FDA">
+            <End Role="Ticker" EntitySet="Ticker" />
+            <End Role="TickerDailyData" EntitySet="TickerDailyData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TickerMon__Ticke__07C12930" Association="AdvisorModel.FK__TickerMon__Ticke__07C12930">
+            <End Role="Ticker" EntitySet="Ticker" />
+            <End Role="TickerMonthlyData" EntitySet="TickerMonthlyData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TickerWee__Ticke__04E4BC85" Association="AdvisorModel.FK__TickerWee__Ticke__04E4BC85">
+            <End Role="Ticker" EntitySet="Ticker" />
+            <End Role="TickerWeeklyData" EntitySet="TickerWeeklyData" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Ticker">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int16" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LongName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Market" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="QuandlTicker" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="LastDailyUpdate" Precision="3" />
+          <Property Type="DateTime" Name="LastWeeklyUpdate" Precision="3" />
+          <Property Type="DateTime" Name="LastMonthlyUpdate" Precision="3" />
+          <NavigationProperty Name="TickerDailyData" Relationship="AdvisorModel.FK__TickerDai__Ticke__02084FDA" FromRole="Ticker" ToRole="TickerDailyData" />
+          <NavigationProperty Name="TickerMonthlyData" Relationship="AdvisorModel.FK__TickerMon__Ticke__07C12930" FromRole="Ticker" ToRole="TickerMonthlyData" />
+          <NavigationProperty Name="TickerWeeklyData" Relationship="AdvisorModel.FK__TickerWee__Ticke__04E4BC85" FromRole="Ticker" ToRole="TickerWeeklyData" />
+        </EntityType>
+        <EntityType Name="TickerDailyData">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TickerID" />
+            <PropertyRef Name="Point" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="TickerID" Nullable="false" />
+          <Property Type="DateTime" Name="Point" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="Open" Nullable="false" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="High" Nullable="false" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="Low" Nullable="false" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="Close" Nullable="false" Precision="9" Scale="4" />
+          <Property Type="Int64" Name="Volume" Nullable="false" />
+          <NavigationProperty Name="Ticker" Relationship="AdvisorModel.FK__TickerDai__Ticke__02084FDA" FromRole="TickerDailyData" ToRole="Ticker" />
+        </EntityType>
+        <EntityType Name="TickerMonthlyData">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TickerID" />
+            <PropertyRef Name="Point" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="TickerID" Nullable="false" />
+          <Property Type="DateTime" Name="Point" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="Open" Nullable="false" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="High" Nullable="false" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="Low" Nullable="false" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="Close" Nullable="false" Precision="9" Scale="4" />
+          <Property Type="Int64" Name="Volume" Nullable="false" />
+          <NavigationProperty Name="Ticker" Relationship="AdvisorModel.FK__TickerMon__Ticke__07C12930" FromRole="TickerMonthlyData" ToRole="Ticker" />
+        </EntityType>
+        <EntityType Name="TickerWeeklyData">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TickerID" />
+            <PropertyRef Name="Point" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="TickerID" Nullable="false" />
+          <Property Type="DateTime" Name="Point" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="Open" Nullable="false" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="High" Nullable="false" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="Low" Nullable="false" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="Close" Nullable="false" Precision="9" Scale="4" />
+          <Property Type="Int64" Name="Volume" Nullable="false" />
+          <NavigationProperty Name="Ticker" Relationship="AdvisorModel.FK__TickerWee__Ticke__04E4BC85" FromRole="TickerWeeklyData" ToRole="Ticker" />
+        </EntityType>
+        <Association Name="FK__TickerDai__Ticke__02084FDA">
+          <End Type="AdvisorModel.Ticker" Role="Ticker" Multiplicity="1" />
+          <End Type="AdvisorModel.TickerDailyData" Role="TickerDailyData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TickerDailyData">
+              <PropertyRef Name="TickerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TickerMon__Ticke__07C12930">
+          <End Type="AdvisorModel.Ticker" Role="Ticker" Multiplicity="1" />
+          <End Type="AdvisorModel.TickerMonthlyData" Role="TickerMonthlyData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TickerMonthlyData">
+              <PropertyRef Name="TickerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TickerWee__Ticke__04E4BC85">
+          <End Type="AdvisorModel.Ticker" Role="Ticker" Multiplicity="1" />
+          <End Type="AdvisorModel.TickerWeeklyData" Role="TickerWeeklyData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TickerWeeklyData">
+              <PropertyRef Name="TickerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdvisorModelStoreContainer" CdmEntityContainer="AdvisorEntities">
+          <EntitySetMapping Name="Ticker">
+            <EntityTypeMapping TypeName="AdvisorModel.Ticker">
+              <MappingFragment StoreEntitySet="Ticker">
+                <ScalarProperty Name="LastMonthlyUpdate" ColumnName="LastMonthlyUpdate" />
+                <ScalarProperty Name="LastWeeklyUpdate" ColumnName="LastWeeklyUpdate" />
+                <ScalarProperty Name="LastDailyUpdate" ColumnName="LastDailyUpdate" />
+                <ScalarProperty Name="QuandlTicker" ColumnName="QuandlTicker" />
+                <ScalarProperty Name="Market" ColumnName="Market" />
+                <ScalarProperty Name="LongName" ColumnName="LongName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TickerDailyData">
+            <EntityTypeMapping TypeName="AdvisorModel.TickerDailyData">
+              <MappingFragment StoreEntitySet="TickerDailyData">
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="Close" ColumnName="Close" />
+                <ScalarProperty Name="Low" ColumnName="Low" />
+                <ScalarProperty Name="High" ColumnName="High" />
+                <ScalarProperty Name="Open" ColumnName="Open" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="TickerID" ColumnName="TickerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TickerMonthlyData">
+            <EntityTypeMapping TypeName="AdvisorModel.TickerMonthlyData">
+              <MappingFragment StoreEntitySet="TickerMonthlyData">
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="Close" ColumnName="Close" />
+                <ScalarProperty Name="Low" ColumnName="Low" />
+                <ScalarProperty Name="High" ColumnName="High" />
+                <ScalarProperty Name="Open" ColumnName="Open" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="TickerID" ColumnName="TickerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TickerWeeklyData">
+            <EntityTypeMapping TypeName="AdvisorModel.TickerWeeklyData">
+              <MappingFragment StoreEntitySet="TickerWeeklyData">
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="Close" ColumnName="Close" />
+                <ScalarProperty Name="Low" ColumnName="Low" />
+                <ScalarProperty Name="High" ColumnName="High" />
+                <ScalarProperty Name="Open" ColumnName="Open" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="TickerID" ColumnName="TickerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

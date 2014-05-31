@@ -40,10 +40,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="QuandlCS">
+      <HintPath>..\..\..\..\QuandlCS\QuandlCS\bin\Debug\QuandlCS.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -118,17 +123,49 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\AdvisorModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdvisorModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdvisorModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdvisorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdvisorModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdvisorModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TickerController.cs" />
+    <Compile Include="Controllers\TickerUpdateController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ticker.cs">
+      <DependentUpon>AdvisorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TickerDailyData.cs">
+      <DependentUpon>AdvisorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TickerMonthlyData.cs">
+      <DependentUpon>AdvisorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TickerWeeklyData.cs">
+      <DependentUpon>AdvisorModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceResponses\BaseServiceResponse.cs" />
+    <Compile Include="ServiceResponses\TickerUpdate\TickerUpdateSimpleGetResponse.cs" />
+    <Compile Include="Utils\QuandlHelper.cs" />
+    <Compile Include="Utils\QuandlStockResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -187,6 +224,23 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <EntityDeploy Include="Models\AdvisorModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AdvisorModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AdvisorModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AdvisorModel.edmx</DependentUpon>
+      <LastGenOutput>AdvisorModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AdvisorModel.edmx.diagram">
+      <DependentUpon>AdvisorModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\AdvisorModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AdvisorModel.edmx</DependentUpon>
+      <LastGenOutput>AdvisorModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -232,10 +286,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

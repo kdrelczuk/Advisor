@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="59962342a2cb40e7b8659203b97d97c2" Name="Diagram1">
+        <EntityTypeShape EntityType="AdvisorModel.Ticker" Width="1.5" PointX="4.4954760151428523" PointY="23.8154691121613" />
+        <EntityTypeShape EntityType="AdvisorModel.TickerDailyData" Width="1.5" PointX="0.008125780154078166" PointY="9.9566431836954514" />
+        <EntityTypeShape EntityType="AdvisorModel.TickerMonthlyData" Width="1.5" PointX="8.0885120165015163" PointY="31.163573711721028" />
+        <EntityTypeShape EntityType="AdvisorModel.TickerWeeklyData" Width="1.5" PointX="1.7365174990783059" PointY="13.75630945607848" />
+        <AssociationConnector Association="AdvisorModel.FK__TickerDai__Ticke__02084FDA" />
+        <AssociationConnector Association="AdvisorModel.FK__TickerMon__Ticke__07C12930" />
+        <AssociationConnector Association="AdvisorModel.FK__TickerWee__Ticke__04E4BC85" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

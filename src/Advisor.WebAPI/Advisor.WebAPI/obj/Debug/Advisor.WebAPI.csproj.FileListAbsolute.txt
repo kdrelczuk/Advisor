@@ -27,6 +27,8 @@ C:\Git\Advisor\src\Advisor.WebAPI\Advisor.WebAPI\bin\System.Web.Razor.xml
 C:\Git\Advisor\src\Advisor.WebAPI\Advisor.WebAPI\bin\System.Web.WebPages.xml
 C:\Git\Advisor\src\Advisor.WebAPI\Advisor.WebAPI\bin\System.Web.WebPages.Deployment.xml
 C:\Git\Advisor\src\Advisor.WebAPI\Advisor.WebAPI\bin\System.Web.WebPages.Razor.xml
-C:\Git\Advisor\src\Advisor.WebAPI\Advisor.WebAPI\obj\Debug\Advisor.WebAPI.csprojResolveAssemblyReference.cache
 C:\Git\Advisor\src\Advisor.WebAPI\Advisor.WebAPI\obj\Debug\Advisor.WebAPI.dll
 C:\Git\Advisor\src\Advisor.WebAPI\Advisor.WebAPI\obj\Debug\Advisor.WebAPI.pdb
+C:\Git\Advisor\src\Advisor.WebAPI\Advisor.WebAPI\bin\QuandlCS.dll
+C:\Git\Advisor\src\Advisor.WebAPI\Advisor.WebAPI\bin\QuandlCS.pdb
+C:\Git\Advisor\src\Advisor.WebAPI\Advisor.WebAPI\obj\Debug\Advisor.WebAPI.csprojResolveAssemblyReference.cache
