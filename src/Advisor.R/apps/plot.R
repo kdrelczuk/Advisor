@@ -1,4 +1,4 @@
-app <- function(env)
+appPlot <- function(env)
 {
   t1 = Sys.time()
   
@@ -29,6 +29,7 @@ app <- function(env)
       logerror('plot application',err)
       res$write(err)
     })
+  
   res$write(as.character(Sys.time()-t1))
   res$finish()
 }
