@@ -11,7 +11,7 @@ app <- function(env)
   req <- Rook::Request$new(env)
   res <- Rook::Response$new()
   
-  result = tryCatch(
+  tryCatch(error = function(err) { logerror(paste(logReqId,err)); res$write(err) },
     {
       query = Utils$parse_query(req$query_string())
       symbolName = query$name
@@ -38,16 +38,6 @@ app <- function(env)
         chartSeries(data, TA = 'addVo();addBBands();addMACD()',theme='white',name=symbolName)
         dev.off()
       }
-    }
-    , warning = function(war)
-    {
-      logwarn(paste(reqId,as.character(war)))
-      res$write(war)
-    }
-    , error = function(err)
-    {
-      logerror(paste(reqId,as.character(err)))
-      res$write(err)
     })
   
   logMessage = paste(logReqId , "request for plot application was handled in",as.character(round(Sys.time()-t1,2)),"s") 
