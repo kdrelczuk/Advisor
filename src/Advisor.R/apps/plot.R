@@ -10,8 +10,10 @@ app <- function(env)
   loginfo(paste(logReqId," app plot has been requested" ,sep=""))
   req <- Rook::Request$new(env)
   res <- Rook::Response$new()
+  resJSONOK = '{ "data" : { "url": "%s", "performace": "%.2f", "requestID":"%d" }}'
+  resJSONErr = '{ "error" : "%s" }'
   
-  tryCatch(error = function(err) { logerror(paste(logReqId,err)); res$write(err) },
+  tryCatch(error = function(err) { logerror(paste(logReqId,err)); res$write(sprintf(resJSONErr,err)) },
     {
       query = Utils$parse_query(req$query_string())
       symbolName = query$name
@@ -39,14 +41,14 @@ app <- function(env)
         dev.off()
       }
       
-      logMessage = paste(logReqId , "request for plot application was handled in",as.character(round(Sys.time()-t1,2)),"s") 
+      responseTime = round(Sys.time()-t1,2)
+      logMessage = paste(logReqId , "request for plot application was handled in",as.character(responseTime),"s") 
       if (cached)
       {
         logMessage = paste(logMessage,'(from cache)')
       }
-      
-      res$write(fileName)
-      res$write(logMessage)
+
+      res$write(sprintf(resJSONOK,fullPlotPath,responseTime,reqId))
       loginfo(logMessage)      
     })
 

@@ -13,6 +13,7 @@ tryCatch(error = function(err) { logerror(paste('!',err));},
 {
   loginfo('Initialization started')
   
+  #load packages
   loginfo('-> loading packages (%d packages to load)',length(packages))
   for(package in packages)
   {
@@ -28,8 +29,10 @@ tryCatch(error = function(err) { logerror(paste('!',err));},
     }
   } 
   
+  #if packages has been loaded
   if(success)
   {
+    #load functions
     funs = list.files(path='functions/')
     loginfo('-> loading functions (%d functions to load)',length(funs))
     for(fun in funs)
@@ -38,6 +41,7 @@ tryCatch(error = function(err) { logerror(paste('!',err));},
       loginfo('---> function %s loaded', fun)
     }
     
+    #create listener
     loginfo('-> creating listener on port %d',port)
     .Call(tools:::startHTTPD, interface, port)
     unlockBinding("httpdPort", environment(tools:::startDynamicHelp))
@@ -46,6 +50,7 @@ tryCatch(error = function(err) { logerror(paste('!',err));},
     s$listenAddr <- interface
     s$listenPort <- port
   
+    #read and add applications
     apps = list.files(path='apps/')
     loginfo('-> loading applications (%d application to load)',length(apps))
     for(app in apps)
@@ -57,13 +62,6 @@ tryCatch(error = function(err) { logerror(paste('!',err));},
     s$print()
     
     loginfo('Initialization of rook server on port %d has ended. Server is working...',port)
-    
-    if (.Platform$OS.type == "unix")
-    {
-      setwd("/var/www/html/")
-    } else
-    {
-      setwd("C:/RPlots")
-    }
+
   }
 })
