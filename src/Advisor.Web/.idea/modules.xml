@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/STAdvisor.Web.iml" filepath="$PROJECT_DIR$/.idea/STAdvisor.Web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Advisor.Web.iml" filepath="$PROJECT_DIR$/.idea/Advisor.Web.iml" />
     </modules>
   </component>
 </project>

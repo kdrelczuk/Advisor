@@ -4,7 +4,7 @@ Ext.define('Advisor.view.TickersDetailsView',
         alias: 'widget.tickersdetailspanel',
         items: [
             {
-                title: 'Chart',
+                title: 'Basic charts',
                 xtype: 'tickersdetailschartpanel'
             }
         ]

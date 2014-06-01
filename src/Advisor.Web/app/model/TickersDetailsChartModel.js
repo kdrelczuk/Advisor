@@ -3,7 +3,7 @@ Ext.define('Advisor.model.TickersDetailsChartModel',
     extend: 'Ext.data.Model',
     fields:
         [
-            'charturl','perf'
+            'url'
         ],
     proxy:
     {

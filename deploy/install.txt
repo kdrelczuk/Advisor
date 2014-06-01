@@ -1,0 +1,32 @@
+apache:
+sudo apt-get update
+sudo apt-get install apache2
+
+java:
+sudo apt-get install default-jre
+sudo apt-get install default-jdk
+java -version
+
+jdbc:
+sudo wget http://download.microsoft.com/download/D/6/A/D6A241AC-433E-4CD2-A1CE-50177E8428F0/1033/sqljdbc_3.0.1301.101_enu.tar.gz
+sudo tar -xvf sqljdbc_3.0.1301.101_enu.tar.gz
+sudo rm sqljdbc_3.0.1301.101_enu.tar.gz
+
+R:
+sudo apt-get install r-base
+R CMD javareconf -e
+
+GIT
+sudo apt-get install git-core
+
+packages in R:
+install.packages("Rook")
+install.packages("logging")
+install.packages("xts")
+install.packages("quantmod")
+install.packages("rJava")
+install.packages("RJDBC")
+
+GIT
+git reset HEAD --hard
+git pull

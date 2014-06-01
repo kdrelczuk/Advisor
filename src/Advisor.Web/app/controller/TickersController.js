@@ -14,9 +14,10 @@ Ext.define('Advisor.controller.TickersController',
                     tabPanel.add(
                         {
                             title: record.data.id,
-                            bodyPadding: 10,
+                            border:true,
                             xtype : 'tickersdetailspanel',
-                            closable: true
+                            closable: true,
+                            ticker: 'T_' + record.data.id
                         }
                     ).show();
                 }

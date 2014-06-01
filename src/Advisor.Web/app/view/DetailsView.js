@@ -6,7 +6,6 @@ Ext.define('Advisor.view.DetailsView',
         items: [
             {
                 title: 'Welcome',
-                bodyPadding: 10,
                 html : 'Hello!'
             },
             {

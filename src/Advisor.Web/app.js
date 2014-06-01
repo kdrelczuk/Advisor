@@ -28,7 +28,8 @@ Ext.application({
     ],
     controllers:
     [
-        'Advisor.controller.TickersController'
+        'Advisor.controller.TickersController',
+        'Advisor.controller.TickersDetailsChartController'
     ],
     launch: function()
     {
