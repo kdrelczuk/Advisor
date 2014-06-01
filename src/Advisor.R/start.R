@@ -3,6 +3,7 @@ interface = '0.0.0.0'
 
 library(logging)
 addHandler(writeToFile, file = '/var/www/html/RServer.log')
+setLevel(loglevels)
 loginfo('==================================================')
 
 packages <- scan('packages.cfg',what='character')

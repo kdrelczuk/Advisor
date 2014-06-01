@@ -4,9 +4,10 @@ app <- function(env)
   t1 = Sys.time()
   cached = T
   reqId = trunc(runif(1, 1000000, 9999999))
+  logReqId = paste("(id:",reqId,")")
   
   #start processing request
-  loginfo(paste("* request for plot made (id:",reqId,")",sep=""))
+  loginfo(paste(logReqId," app plot has been requested" ,sep=""))
   req <- Rook::Request$new(env)
   res <- Rook::Response$new()
   
@@ -48,12 +49,15 @@ app <- function(env)
       logerror(paste(reqId,as.character(err)))
       res$write(err)
     })
-  logMessage = paste("request for plot ended in with id:",reqId,"ended in ",as.character(Sys.time()-t1)) 
+  
+  logMessage = paste(logReqId , "request for plot application was handled in",as.character(round(Sys.time()-t1,2)),"s") 
   if (cached)
   {
     paste(logMessage,'(from cache)')
   }
+  
   loginfo(logMessage)
-  res$write()
+  res@write(logMessage)
+  res$write(fileName)
   res$finish()
 }
