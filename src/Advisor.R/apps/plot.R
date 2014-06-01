@@ -10,7 +10,7 @@ app <- function(env)
   loginfo(paste(logReqId," app plot has been requested" ,sep=""))
   req <- Rook::Request$new(env)
   res <- Rook::Response$new()
-  resJSONOK = '{ "data" : { "url": "%s", "performace": "%.2f", "requestID":"%d" }}'
+  resJSONOK = '{ "data" : { "url": "%s", "performace": "%.2f", "requestID":"%d", "cached":"%s" }}'
   resJSONErr = '{ "error" : "%s" }'
   
   tryCatch(error = function(err) { logerror(paste(logReqId,err)); res$write(sprintf(resJSONErr,err)) },
@@ -48,7 +48,7 @@ app <- function(env)
         logMessage = paste(logMessage,'(from cache)')
       }
 
-      res$write(sprintf(resJSONOK,fullPlotPath,responseTime,reqId))
+      res$write(sprintf(resJSONOK,fullPlotPath,responseTime,reqId,cached))
       loginfo(logMessage)      
     })
 
