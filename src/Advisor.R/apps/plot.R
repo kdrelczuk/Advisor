@@ -38,16 +38,17 @@ app <- function(env)
         chartSeries(data, TA = 'addVo();addBBands();addMACD()',theme='white',name=symbolName)
         dev.off()
       }
+      
+      logMessage = paste(logReqId , "request for plot application was handled in",as.character(round(Sys.time()-t1,2)),"s") 
+      if (cached)
+      {
+        paste(logMessage,'(from cache)')
+      }
+      
+      loginfo(logMessage)
+      res@write(logMessage)
+      res$write(fileName)      
     })
-  
-  logMessage = paste(logReqId , "request for plot application was handled in",as.character(round(Sys.time()-t1,2)),"s") 
-  if (cached)
-  {
-    paste(logMessage,'(from cache)')
-  }
-  
-  loginfo(logMessage)
-  res@write(logMessage)
-  res$write(fileName)
+
   res$finish()
 }
