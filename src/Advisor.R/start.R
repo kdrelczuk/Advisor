@@ -9,6 +9,7 @@ packages <- scan('packages.cfg',what='character')
 success <- T
 
 loginfo('Initialization started')
+
 loginfo('-> loading packages (%d packages to load)',length(packages))
 for(package in packages)
 {
@@ -21,6 +22,14 @@ for(package in packages)
   {
     success = F
     logwarn('---> package %s not found. Terminating!',package)
+  }
+  
+  funs = list.files(path='functions/')
+  loginfo('-> loading functions (%d functions to load)',length(funs))
+  for(fun in funs)
+  {
+    source(paste('functions',fun,sep='/'))
+    loginfo('---> function %s loaded', fun)
   }
 } 
 
@@ -43,14 +52,6 @@ if(success)
   }
   
   s$print()
-  
-  funs = list.files(path='functions/')
-  loginfo('-> loading functions (%d functions to load)',length(funs))
-  for(fun in funs)
-  {
-    source(paste('functions',fun,sep='/'))
-    loginfo('---> function %s loaded', fun)
-  }
   
   loginfo('Initialization of rook server on port %d has ended. Server is working...',port)
   

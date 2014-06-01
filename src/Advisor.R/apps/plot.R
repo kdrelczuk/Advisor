@@ -1,7 +1,8 @@
 app <- function(env)
 {
   t1 = Sys.time()
-  loginfo("plot called")
+  reqId = trunc(runif(1, 1000000, 9999999))
+  loginfo(paste("request for plot made - id:",reqIq))
   req <- Rook::Request$new(env)
   res <- Rook::Response$new()
   
@@ -16,7 +17,7 @@ app <- function(env)
       data = GetAdvisorData(symbol,pstart,pstop)
       
       png(file='/var/www/html/test.png',width=x,height=y)
-      chartSeries(data, TA = 'addVo();addBBands();addCCI();addSMI()')
+      chartSeries(data, TA = 'addVo();addBBands();addCCI();addSMI()',theme='white')
       dev.off()
     }
     , warning = function(war)
@@ -30,6 +31,6 @@ app <- function(env)
       res$write(err)
     })
   
-  res$write(as.character(Sys.time()-t1))
+  res$write(paste("request with id:",reqId,"ended in ",as.character(Sys.time()-t1)))
   res$finish()
 }
