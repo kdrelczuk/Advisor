@@ -2,7 +2,7 @@ app <- function(env)
 {
   t1 = Sys.time()
   reqId = trunc(runif(1, 1000000, 9999999))
-  loginfo(paste("request for plot made - id:",reqIq))
+  loginfo(paste("request for plot made - id:",reqId))
   req <- Rook::Request$new(env)
   res <- Rook::Response$new()
   
