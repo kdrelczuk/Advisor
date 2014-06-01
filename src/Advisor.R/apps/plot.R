@@ -4,7 +4,7 @@ app <- function(env)
   t1 = Sys.time()
   cached = T
   reqId = trunc(runif(1, 1000000, 9999999))
-  logReqId = paste("(id:",reqId,")")
+  logReqId = paste("(id:",reqId,")",sep='')
   
   #start processing request
   loginfo(paste(logReqId," app plot has been requested" ,sep=""))
@@ -42,7 +42,7 @@ app <- function(env)
       logMessage = paste(logReqId , "request for plot application was handled in",as.character(round(Sys.time()-t1,2)),"s") 
       if (cached)
       {
-        paste(logMessage,'(from cache)')
+        logMessage = paste(logMessage,'(from cache)')
       }
       
       res$write(fileName)
