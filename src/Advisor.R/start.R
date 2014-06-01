@@ -66,4 +66,4 @@ tryCatch(error = function(err) { logerror(paste('!',err));},
       setwd("C:/RPlots")
     }
   }
-}
+})
