@@ -48,7 +48,7 @@ app <- function(env)
         logMessage = paste(logMessage,'(from cache)')
       }
 
-      res$write(sprintf(resJSONOK,fullPlotPath,responseTime,reqId,cached))
+      res$write(sprintf(resJSONOK,fileName,responseTime,reqId,cached))
       loginfo(logMessage)      
     })
 
