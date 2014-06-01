@@ -45,9 +45,9 @@ app <- function(env)
         paste(logMessage,'(from cache)')
       }
       
-      loginfo(logMessage)
-      res@write(logMessage)
-      res$write(fileName)      
+      res$write(fileName)
+      res$write(logMessage)
+      loginfo(logMessage)      
     })
 
   res$finish()
