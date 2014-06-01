@@ -34,7 +34,7 @@ app <- function(env)
       if (!file.exists(fullPlotPath))
       {
         cached = F
-        png(file='fullPlotPath',width=x,height=y)
+        png(file=fullPlotPath,width=x,height=y)
         chartSeries(data, TA = 'addVo();addBBands();addMACD()',theme='white',name=symbolName)
         dev.off()
       }
