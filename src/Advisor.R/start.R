@@ -24,7 +24,10 @@ for(package in packages)
     success = F
     logwarn('---> package %s not found. Terminating!',package)
   }
-  
+} 
+
+if(success)
+{
   funs = list.files(path='functions/')
   loginfo('-> loading functions (%d functions to load)',length(funs))
   for(fun in funs)
@@ -32,10 +35,7 @@ for(package in packages)
     source(paste('functions',fun,sep='/'))
     loginfo('---> function %s loaded', fun)
   }
-} 
-
-if(success)
-{
+  
   loginfo('-> creating listener on port %d',port)
   .Call(tools:::startHTTPD, interface, port)
   unlockBinding("httpdPort", environment(tools:::startDynamicHelp))
