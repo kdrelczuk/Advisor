@@ -1,6 +1,7 @@
 apache:
 sudo apt-get update
 sudo apt-get install apache2
+sudo chmod 777 /var/www/html
 
 java:
 sudo apt-get install default-jre
@@ -27,6 +28,7 @@ install.packages("quantmod")
 install.packages("rJava")
 install.packages("RJDBC")
 
-GIT
-git reset HEAD --hard
-git pull
+Advisor.R
+sudo mkdir Advisor.R
+sudo chmod 777 Advisor.R
+
