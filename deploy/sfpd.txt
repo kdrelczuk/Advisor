@@ -1,6 +1,0 @@
-option batch abort 
-option confirm off 
-open scp://ubuntu@ec2-54-186-104-152.us-west-2.compute.amazonaws.com -privatekey=C:\rserver01.ppk 
-
-put C:\GitHub\Advisor\src\Advisor.R\ /Advisor.R/
-exit

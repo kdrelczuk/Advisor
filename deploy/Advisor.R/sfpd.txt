@@ -1,0 +1,10 @@
+option batch abort 
+option confirm off 
+
+open scp://ubuntu@ec2-54-191-63-43.us-west-2.compute.amazonaws.com -privatekey=C:\rserver01.ppk 
+put C:\Git\Advisor\src\Advisor.R\ /Advisor.R/
+
+open scp://ubuntu@ec2-54-191-61-149.us-west-2.compute.amazonaws.com -privatekey=C:\rserver01.ppk 
+put C:\Git\Advisor\src\Advisor.R\ /Advisor.R/
+
+exit
