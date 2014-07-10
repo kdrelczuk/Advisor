@@ -32,3 +32,8 @@ Advisor.R
 sudo mkdir Advisor.R
 sudo chmod 777 Advisor.R
 
+Team city:
+http://aws.amazon.com/powershell/
+winscp
+Set-ExecutionPolicy RemoteSigned
+
