@@ -2,6 +2,7 @@
 Set-AWSCredentials -StoredCredentials AdvisorAWS
 
 $path = ".\artefacts\rservers"
+Remove-Item '.\artefacts'
 New-Item -ItemType directory -Path $path
 
 $runningInstances = (Get-EC2Instance -Region us-west-2).Instances | ?{ ($_.State.Name -eq 'running') -and ($_.KeyName -eq 'rserver01') }  
