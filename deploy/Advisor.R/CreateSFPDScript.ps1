@@ -11,7 +11,7 @@ $a = Get-Content 'rservers\dns.txt'
 
 $a | 
 %{ 
-    ('open scp://' + $_ + ' -privatekey=C:\rserver01.ppk ') | Out-File ($path + "\spdf.txt") -Append
+    ('open scp://' + $_ + ' -privatekey=keys/rserver01.ppk') | Out-File ($path + "\spdf.txt") -Append
     'put src\ /Advisor.R/' | Out-File ($path + "\spdf.txt") -Append
 }
 
