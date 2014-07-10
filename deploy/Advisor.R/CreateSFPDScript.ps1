@@ -7,12 +7,12 @@ else { Remove-Item ($path + '\*') }
 'option batch abort' | Out-File ($path + "\spdf.txt") -Append
 'option confirm off' | Out-File ($path + "\spdf.txt") -Append
 
-$a = Get-Content '.\in\rservers\dns.txt'
+$a = Get-Content 'rservers\dns.txt'
 
 $a | 
 %{ 
     ('open scp://' + $_ + ' -privatekey=C:\rserver01.ppk ') | Out-File ($path + "\spdf.txt") -Append
-    'put .\in\src\ /Advisor.R/' | Out-File ($path + "\spdf.txt") -Append
+    'put src\ /Advisor.R/' | Out-File ($path + "\spdf.txt") -Append
 }
 
 'exit' | Out-File ($path + "\spdf.txt") -Append
